@@ -1,116 +1,49 @@
-const STEPS = [
-  {
-    step: '01',
-    title: 'Connect',
-    desc: 'Plug in your data sources via our universal connector in under 5 minutes.',
-    color: '#00f5ff',
-    rgb: '0,245,255',
-  },
-  {
-    step: '02',
-    title: 'Configure',
-    desc: 'Select your AI models and tune parameters through an intuitive visual editor.',
-    color: '#a855f7',
-    rgb: '168,85,247',
-  },
-  {
-    step: '03',
-    title: 'Process',
-    desc: 'Our quantum engine ingests, normalizes, and enriches data at petabyte scale.',
-    color: '#f0abfc',
-    rgb: '240,171,252',
-  },
-  {
-    step: '04',
-    title: 'Amplify',
-    desc: 'Deploy insights to any surface — dashboards, APIs, webhooks, or automation.',
-    color: '#00f5ff',
-    rgb: '0,245,255',
-  },
+const SPEAKERS = [
+  { name: 'Dr. Sarah Chen', title: 'Director of AI Research', org: 'QuantumMind Labs', grad: 'from-cyan-900 to-slate-800' },
+  { name: 'Marcus Rodriguez', title: 'Chief Innovation Officer', org: 'NexusTech Corp', grad: 'from-purple-900 to-slate-800' },
+  { name: 'Alex Kim', title: 'Founder & CEO', org: 'FutureSync AI', grad: 'from-pink-900 to-slate-800' },
+  { name: 'Jordan Taylor', title: 'Lead Quantum Engineer', org: 'QuantumEdge', grad: 'from-cyan-900 to-purple-900' },
 ];
 
-export default function HowItWorks() {
+export default function Speakers() {
   return (
-    <section className="relative py-28 overflow-hidden">
-      {/* BG radial */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(168,85,247,0.06) 0%, transparent 70%)' }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5"
-            style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}
-          >
-            <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#a855f7' }}>
-              Process
-            </span>
-          </div>
-          <h2
-            className="font-black leading-tight"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.02em' }}
-          >
-            <span
-              style={{
-                background: 'linear-gradient(135deg, #00f5ff, #a855f7)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              How NexusAI{' '}
-            </span>
-            <span style={{ color: '#e2e8f0' }}>Works</span>
+    <section id="speakers" className="relative py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <h2 className="font-black uppercase text-white" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '0.06em' }}>
+            SPEAKER LINEUP
           </h2>
+          <p className="mt-3 text-sm" style={{ color: 'rgba(148,163,184,0.6)' }}>Industry pioneers sharing breakthrough insights</p>
         </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-          {/* Connector line (desktop) */}
-          <div
-            className="absolute hidden md:block"
-            style={{
-              top: '36px',
-              left: '12.5%',
-              right: '12.5%',
-              height: '1px',
-              background: 'linear-gradient(90deg, rgba(0,245,255,0.3), rgba(168,85,247,0.3), rgba(240,171,252,0.3), rgba(0,245,255,0.3))',
-            }}
-          />
-
-          {STEPS.map((s, i) => (
-            <div key={s.step} className="relative flex flex-col items-center text-center">
-              {/* Circle */}
-              <div
-                className="relative z-10 w-[72px] h-[72px] rounded-full flex items-center justify-center mb-5"
-                style={{
-                  background: '#02020f',
-                  border: `2px solid ${s.color}`,
-                  boxShadow: `0 0 0 4px rgba(2,2,15,1), 0 0 20px ${s.color}40`,
-                }}
-              >
-                <span className="font-black text-2xl" style={{ color: s.color }}>
-                  {s.step}
-                </span>
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {SPEAKERS.map((s) => (
+            <div key={s.name} className="rounded-2xl overflow-hidden group" style={{
+              background: 'rgba(255,255,255,0.025)',
+              border: '1px solid rgba(255,255,255,0.07)',
+            }}>
+              {/* Photo placeholder */}
+              <div className={`relative h-56 bg-gradient-to-b ${s.grad} flex items-end`} style={{ filter: 'grayscale(0.4) contrast(1.05)' }}>
+                {/* Silhouette */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                  <svg width="80" height="80" viewBox="0 0 80 80" fill="rgba(255,255,255,0.4)">
+                    <circle cx="40" cy="28" r="18"/>
+                    <path d="M10 80c0-16.6 13.4-30 30-30s30 13.4 30 30"/>
+                  </svg>
+                </div>
+                {/* Cyan bottom fade */}
+                <div className="absolute bottom-0 left-0 right-0 h-20" style={{
+                  background: 'linear-gradient(to top, rgba(0,245,255,0.12), transparent)',
+                }} />
               </div>
 
-              {/* Arrow between steps (mobile) */}
-              {i < STEPS.length - 1 && (
-                <div
-                  className="md:hidden w-px h-8 mb-5"
-                  style={{ background: `linear-gradient(to bottom, ${s.color}60, transparent)` }}
-                />
-              )}
-
-              <h3 className="font-bold text-lg mb-2" style={{ color: '#e2e8f0' }}>
-                {s.title}
-              </h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'rgba(100,116,139,0.85)' }}>
-                {s.desc}
-              </p>
+              <div className="p-5">
+                <h3 className="font-bold text-white mb-0.5" style={{ fontSize: '0.95rem' }}>{s.name}</h3>
+                <p className="text-xs mb-1" style={{ color: '#00f5ff' }}>{s.title}</p>
+                <p className="text-xs" style={{ color: 'rgba(148,163,184,0.5)' }}>{s.org}</p>
+              </div>
             </div>
           ))}
         </div>

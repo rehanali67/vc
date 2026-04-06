@@ -1,202 +1,135 @@
-const PLANS = [
+const TIERS = [
   {
-    name: 'Starter',
-    price: '$0',
-    period: 'forever free',
-    desc: 'Perfect for exploration and small projects.',
-    features: [
-      '10K queries/month',
-      '2 AI models',
-      'Community support',
-      'Basic analytics',
-      '1 workspace',
-    ],
-    cta: 'Start Free',
+    name: 'Virtual Pass',
+    price: '$299',
     highlight: false,
-    color: '#00f5ff',
-    rgb: '0,245,255',
+    features: [
+      'Live streaming access',
+      'All sessions on demand for 30 days',
+      'Digital swag bag',
+      'Community Discord access',
+    ],
+    cta: 'Select Virtual Pass',
   },
   {
-    name: 'Pro',
-    price: '$99',
-    period: 'per month',
-    desc: 'For teams ready to move to production at scale.',
+    name: 'Standard Pass',
+    price: '$599',
+    highlight: false,
     features: [
-      '5M queries/month',
-      'All AI models',
-      'Priority support',
-      'Advanced analytics',
-      '10 workspaces',
-      'Custom domains',
-      'SSO & SAML',
+      'Full 3-day access',
+      'All sessions & workshops',
+      'Networking events',
+      'Lunch included',
+      'Certificate of attendance',
     ],
-    cta: 'Start Pro Trial',
+    cta: 'Select Standard Pass',
+  },
+  {
+    name: 'VIP Pass',
+    price: '$1000',
     highlight: true,
-    color: '#a855f7',
-    rgb: '168,85,247',
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    period: 'contact us',
-    desc: 'Unlimited scale, custom SLAs, dedicated infra.',
+    badge: 'BEST VALUE',
     features: [
-      'Unlimited queries',
-      'Custom model fine-tuning',
-      'Dedicated support pod',
-      'Custom analytics',
-      'Unlimited workspaces',
-      'On-premise deploy',
-      'SLA guarantee',
+      'Premium seating',
+      'VIP lounge access',
+      'Private speaker meet & greets',
+      '1-on-1 consultation slots',
+      'Lifetime recording access',
+      'Priority support',
     ],
-    cta: 'Contact Sales',
-    highlight: false,
-    color: '#f0abfc',
-    rgb: '240,171,252',
+    cta: 'Select VIP Pass',
   },
 ];
 
 export default function Pricing() {
   return (
-    <section className="relative py-28">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 100%, rgba(168,85,247,0.06) 0%, transparent 70%)' }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Header */}
+    <section id="tickets" className="relative py-24">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-14">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5"
-            style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}
-          >
-            <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#a855f7' }}>
-              Pricing
-            </span>
-          </div>
-          <h2
-            className="font-black leading-tight mb-4"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.02em' }}
-          >
-            <span style={{ color: '#e2e8f0' }}>Simple, </span>
-            <span
-              style={{
-                background: 'linear-gradient(135deg, #00f5ff, #a855f7)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              Transparent
-            </span>
-            <span style={{ color: '#e2e8f0' }}> Pricing</span>
+          <h2 className="font-black uppercase text-white" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '0.06em' }}>
+            PRICING
           </h2>
-          <p className="max-w-md mx-auto text-base" style={{ color: 'rgba(148,163,184,0.6)' }}>
-            Start free, scale infinitely. No hidden fees, no surprises.
-          </p>
+          <p className="mt-3 text-sm" style={{ color: 'rgba(148,163,184,0.6)' }}>Choose the experience that fits your goals</p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {PLANS.map((plan) => (
-            <div
-              key={plan.name}
-              className="relative rounded-2xl p-7 flex flex-col"
-              style={{
-                background: plan.highlight
-                  ? 'rgba(168,85,247,0.06)'
-                  : 'rgba(255,255,255,0.02)',
-                border: plan.highlight
-                  ? '1px solid rgba(168,85,247,0.4)'
-                  : '1px solid rgba(255,255,255,0.07)',
-                boxShadow: plan.highlight
-                  ? '0 0 60px rgba(168,85,247,0.12), 0 0 0 1px rgba(168,85,247,0.08)'
-                  : 'none',
-              }}
-            >
-              {/* Popular badge */}
-              {plan.highlight && (
-                <div
-                  className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full text-xs font-black tracking-widest"
-                  style={{
-                    background: 'linear-gradient(135deg, #a855f7, #f0abfc)',
-                    color: '#000',
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'start' }}>
+          {TIERS.map((tier) => (
+            <div key={tier.name} style={{
+              position: 'relative',
+              background: tier.highlight ? 'rgba(12,12,30,0.95)' : 'rgba(255,255,255,0.025)',
+              border: tier.highlight ? '1px solid rgba(0,245,255,0.3)' : '1px solid rgba(255,255,255,0.07)',
+              borderRadius: 20,
+              padding: '28px 24px',
+              boxShadow: tier.highlight ? '0 0 40px rgba(0,245,255,0.07), 0 0 80px rgba(232,121,249,0.04)' : 'none',
+              display: 'flex',
+              flexDirection: 'column',
+            }}>
+              {/* Badge */}
+              {tier.badge && (
+                <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)' }}>
+                  <span style={{
+                    display: 'inline-block',
+                    padding: '3px 12px',
+                    borderRadius: 999,
+                    fontSize: '0.68rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    background: 'linear-gradient(135deg, #00c8ff, #e879f9)',
+                    color: '#fff',
                     whiteSpace: 'nowrap',
-                  }}
-                >
-                  MOST POPULAR
+                  }}>
+                    {tier.badge}
+                  </span>
                 </div>
               )}
 
-              {/* Plan name */}
-              <div
-                className="text-xs font-black tracking-widest mb-4 uppercase"
-                style={{ color: plan.color }}
-              >
-                {plan.name}
-              </div>
-
-              {/* Price */}
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="font-black text-5xl" style={{ color: '#f1f5f9', letterSpacing: '-0.03em' }}>
-                  {plan.price}
-                </span>
-                {plan.price !== 'Custom' && (
-                  <span className="text-sm" style={{ color: 'rgba(100,116,139,0.7)' }}>/ mo</span>
-                )}
-              </div>
-              <p className="text-sm mb-1" style={{ color: 'rgba(100,116,139,0.6)' }}>{plan.period}</p>
-              <p className="text-sm mb-6 leading-relaxed" style={{ color: 'rgba(148,163,184,0.7)' }}>{plan.desc}</p>
-
-              {/* Divider */}
-              <div
-                className="h-px mb-6"
-                style={{ background: `rgba(${plan.rgb},0.15)` }}
-              />
+              {/* Name + price */}
+              <p style={{ color: tier.highlight ? '#00f5ff' : 'rgba(226,232,240,0.65)', fontSize: '0.85rem', fontWeight: 600, marginBottom: 8 }}>
+                {tier.name}
+              </p>
+              <p style={{ color: '#fff', fontWeight: 900, fontSize: '2.25rem', lineHeight: 1, marginBottom: 24 }}>
+                {tier.price}
+              </p>
 
               {/* Features */}
-              <ul className="space-y-3 mb-8 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-center gap-3">
-                    <div
-                      className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center"
-                      style={{ background: `rgba(${plan.rgb},0.12)` }}
-                    >
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                        <path d="M2 5l2 2 4-4" stroke={plan.color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28, flex: 1 }}>
+                {tier.features.map((f) => (
+                  <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <div style={{
+                      width: 16, height: 16, borderRadius: '50%', flexShrink: 0, marginTop: 1,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      background: tier.highlight ? 'rgba(0,245,255,0.1)' : 'rgba(255,255,255,0.06)',
+                    }}>
+                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <path d="M1.5 4L3 5.5L6.5 2" stroke={tier.highlight ? '#00f5ff' : 'rgba(148,163,184,0.6)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-sm" style={{ color: 'rgba(148,163,184,0.8)' }}>{f}</span>
+                    <span style={{ color: 'rgba(226,232,240,0.75)', fontSize: '0.82rem', lineHeight: 1.5 }}>{f}</span>
                   </li>
                 ))}
               </ul>
 
               {/* CTA */}
-              {plan.highlight ? (
-                <a
-                  href="#"
-                  className="block text-center py-3.5 px-6 rounded-xl font-bold text-sm transition-all duration-300"
-                  style={{
-                    background: 'linear-gradient(135deg, #a855f7, #f0abfc)',
-                    color: '#000',
-                    boxShadow: '0 0 30px rgba(168,85,247,0.3)',
-                  }}
-                >
-                  {plan.cta}
-                </a>
-              ) : (
-                <a
-                  href="#"
-                  className="block text-center py-3.5 px-6 rounded-xl font-semibold text-sm transition-all duration-300"
-                  style={{
-                    border: `1px solid rgba(${plan.rgb},0.35)`,
-                    color: plan.color,
-                  }}
-                >
-                  {plan.cta}
-                </a>
-              )}
+              <a href="#" style={{
+                display: 'block',
+                textAlign: 'center',
+                padding: '12px 0',
+                borderRadius: 12,
+                fontWeight: 700,
+                fontSize: '0.85rem',
+                textDecoration: 'none',
+                ...(tier.highlight ? {
+                  background: 'linear-gradient(135deg, #00c8ff, #e879f9)',
+                  color: '#fff',
+                  boxShadow: '0 0 20px rgba(0,200,255,0.2)',
+                } : {
+                  background: 'rgba(255,255,255,0.06)',
+                  color: 'rgba(226,232,240,0.75)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                }),
+              }}>
+                {tier.cta}
+              </a>
             </div>
           ))}
         </div>
